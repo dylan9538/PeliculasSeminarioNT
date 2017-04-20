@@ -1,0 +1,62 @@
+@model PromotorDePeliculas.Models.Premio
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>Premio</h4>
+        <hr />
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="TipoPremio" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="TipoPremio" asp-items="Html.GetEnumSelectList<TipoPremio>()"></select>
+                <span asp-validation-for="TipoPremio" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="fechaEntrega" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="fechaEntrega" class="form-control" />
+                <span asp-validation-for="fechaEntrega" class="text-danger" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Pelicula" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="PeliculaId" class="form-control" asp-items="ViewBag.PeliculaId"></select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Certamen" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="CertamenId" class="form-control" asp-items="ViewBag.CertamenId"></select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+
+
+<div>
+    <a asp-action="Index" class="glyphicon glyphicon-arrow-left" />
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

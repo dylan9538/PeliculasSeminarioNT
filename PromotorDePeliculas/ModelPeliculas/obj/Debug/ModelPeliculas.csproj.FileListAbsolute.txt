@@ -1,0 +1,10 @@
+C:\Users\prestamo\Documents\Visual Studio 2015\Projects\PromotorDePeliculas\ModelPeliculas\bin\Debug\ModelPeliculas.dll.config
+C:\Users\prestamo\Documents\Visual Studio 2015\Projects\PromotorDePeliculas\ModelPeliculas\bin\Debug\ModelPeliculas.dll
+C:\Users\prestamo\Documents\Visual Studio 2015\Projects\PromotorDePeliculas\ModelPeliculas\bin\Debug\ModelPeliculas.pdb
+C:\Users\prestamo\Documents\Visual Studio 2015\Projects\PromotorDePeliculas\ModelPeliculas\bin\Debug\EntityFramework.dll
+C:\Users\prestamo\Documents\Visual Studio 2015\Projects\PromotorDePeliculas\ModelPeliculas\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\prestamo\Documents\Visual Studio 2015\Projects\PromotorDePeliculas\ModelPeliculas\bin\Debug\EntityFramework.xml
+C:\Users\prestamo\Documents\Visual Studio 2015\Projects\PromotorDePeliculas\ModelPeliculas\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\prestamo\Documents\Visual Studio 2015\Projects\PromotorDePeliculas\ModelPeliculas\obj\Debug\ModelPeliculas.csprojResolveAssemblyReference.cache
+C:\Users\prestamo\Documents\Visual Studio 2015\Projects\PromotorDePeliculas\ModelPeliculas\obj\Debug\ModelPeliculas.dll
+C:\Users\prestamo\Documents\Visual Studio 2015\Projects\PromotorDePeliculas\ModelPeliculas\obj\Debug\ModelPeliculas.pdb

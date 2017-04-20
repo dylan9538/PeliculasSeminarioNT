@@ -1,0 +1,46 @@
+@model PromotorDePeliculas.Models.Premio
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Premio</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Pelicula)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pelicula.Titulo )
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Certamen)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Certamen.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoPremio)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TipoPremio)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaEntrega)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.fechaEntrega)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index" class="glyphicon glyphicon-arrow-left" /> |
+    @Html.ActionLink("Edit", "Edit", new { u = Model.CertamenId, d = Model.PeliculaId }) 
+    
+</div>

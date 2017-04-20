@@ -1,0 +1,63 @@
+@model PromotorDePeliculas.Models.Usuario
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Usuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dd>
+            <h4>Comentarios</h4>
+            <table class="table">
+                <tr>
+                    <th>Pelicula</th>
+                    <th>Descripcion</th>
+                    <th>Lugar</th>
+                    <th>Fecha</th>
+                </tr>
+                @foreach (var item in Model.Comentarios)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PeliculaId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Descripcion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Lugar)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FechaComentario)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+
+
+    </dl>
+</div>
+<div>
+    <a asp-action="Index" class="glyphicon glyphicon-arrow-left" /> |
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> 
+    
+</div>

@@ -1,0 +1,66 @@
+@model IEnumerable<PromotorDePeliculas.Models.Papel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron" style="background:url(../Images/red.png); background-size:cover; background-position:center">
+    <h1><font color="white">Papeles por pelicula</font></h1>
+</div>
+
+<p>
+    <a asp-action="Create" class="glyphicon glyphicon-plus"></a>
+    Add new
+</p>
+
+<form asp-action="Index">
+    <p>
+        Buscar papel por nombre de actor: <input type="text" name="cadenaBuscada">
+        <input type="submit" value="Buscar" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                @Html.ActionLink("Pelicula", "Index", new { ordena = ViewBag.Pelicula })
+            </th>
+            <th>
+                @Html.ActionLink("Actor", "Index", new { ordena = ViewBag.Actor })
+            </th>
+            <th>
+                @Html.ActionLink("Descripcion", "Index", new { ordena = ViewBag.Descripcion })
+            </th>
+            <th>
+                @Html.ActionLink("TipoPapel", "Index", new { ordena = ViewBag.TipoPapel })
+            </th>
+          
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pelicula.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Actor.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoPapel)
+            </td>
+            <td>
+                <button> @Html.ActionLink("Edit", "Edit", new { u = item.ActorId, d = item.PeliculaId })</button> |
+                @Html.ActionLink("Details", "Details", new { u = item.ActorId, d = item.PeliculaId/* id=item.PrimaryKey */ }) |
+                <button class="glyphicon glyphicon-trash">@Html.ActionLink("", "Delete", new { u = item.ActorId, d = item.PeliculaId /* id=item.PrimaryKey */ })</button> 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

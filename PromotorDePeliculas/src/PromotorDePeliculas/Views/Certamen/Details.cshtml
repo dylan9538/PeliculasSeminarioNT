@@ -1,0 +1,60 @@
+@model PromotorDePeliculas.Models.Certamen
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Certamen</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ciudad)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Ciudad)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dd>
+            <h4>Premios</h4>
+            <table class="table">
+                <tr>
+                    <th>Tipo de Premio</th>
+                    <th>Fecha de Entrega</th>
+                    <th>Pelicula</th>
+                </tr>
+                @foreach (var item in Model.Premios)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TipoPremio)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.fechaEntrega)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PeliculaId)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+
+
+
+    </dl>
+</div>
+<div>
+    <a asp-action="Index" class="glyphicon glyphicon-arrow-left" /> |
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> 
+   
+</div>

@@ -1,0 +1,73 @@
+@model PromotorDePeliculas.Models.Director
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Director</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Direccion)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Telefono)
+        </dd>
+
+        <dd>
+            <h4>Peliculas</h4>
+            <table class="table">
+                <tr>
+                    <th>Titulo</th>
+                    <th>Lugar de estreno</th>
+                    <th>Descripcion</th>
+                    <th>Nacionalidad</th>
+                    <th>Fecha de estreno</th>
+                </tr>
+                @foreach (var item in Model.Peliculas)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Titulo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LugarEstreno)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Descripcion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nacionalidad)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FechaEstreno)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+
+
+    </dl>
+</div>
+<div>
+    <a asp-action="Index" class="glyphicon glyphicon-arrow-left"/> |
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> 
+   
+</div>

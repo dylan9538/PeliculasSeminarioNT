@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Carterela de peliculas - DT</title>
+    <link rel="shortcut icon" href="~/mov.ico">
+    <environment names="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+    @Html.ApplicationInsightsJavaScript(TelemetryConfiguration)
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top" >
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a asp-controller="Home" asp-action="Index" class="navbar-brand">HOME PAGE</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a data-toggle="dropdown">Users<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-controller="Usuarios" asp-action="Index">Users</a></li>
+                          
+                        </ul>
+                    <li class="dropdown">
+                        <a data-toggle="dropdown">Data<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-controller="Productores" asp-action="Index">Productores</a></li>
+                            <li><a asp-controller="Directores" asp-action="Index">Directores</a></li>
+                            <li><a asp-controller="Actores" asp-action="Index">Actores</a></li>
+
+
+                        </ul>
+                    <li class="dropdown">
+                        <a data-toggle="dropdown">Premiaciones<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-controller="Certamen" asp-action="Index">Certamenes</a></li>
+                            <li><a asp-controller="Premios" asp-action="Index">Premios</a></li>
+
+                        </ul>
+
+                <li class="dropdown">
+                        <a data-toggle="dropdown">About Movies<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-controller="Peliculas" asp-action="Index">Peliculas</a></li>
+                            <li><a asp-controller="Papels" asp-action="Index">Papeles</a></li>
+                            <li><a asp-controller="Comentarios" asp-action="Index">Comentarios</a></li>
+                            
+                        </ul>
+                    <li class="dropdown">
+                        <a data-toggle="dropdown">Consultas<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-controller="Consultas" asp-action="PeliculasNPremios">Peliculas y su total de premios</a></li>
+                            <li><a asp-controller="Consultas" asp-action="PeliculasMasComentadas">Peliculas mas comentadas</a></li>
+                            <li><a asp-controller="Consultas" asp-action="ActoresPapelesPelicula">Reparto por pelicula seleccionada</a></li>
+                            <li><a asp-controller="Consultas" asp-action="PeliculasEstrenadas">Peliculas Estrenadas</a></li>
+                            <li><a asp-controller="Consultas" asp-action="DirectoresPremios">Premios de los directores</a></li>
+                            <li><a asp-controller="Consultas" asp-action="CertamenPeliculasP">Peliculas premiadas en un certamen dado</a></li>
+
+
+                        </ul>
+
+
+                    <li><a asp-controller="Home" asp-action="About">About us</a></li>
+                    <li><a asp-controller="Home" asp-action="Contact">Contact Developer</a></li>  
+
+</ul>
+                @await Html.PartialAsync("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p><font color="white">&copy; 2016 - Promotor de Peliculas</font></p>
+        </footer>
+    </div>
+
+    <environment names="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

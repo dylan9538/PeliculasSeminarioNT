@@ -1,0 +1,54 @@
+@model IEnumerable<PromotorDePeliculas.Models.Certamen>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron" style="background:url(../Images/yellow.jpg); background-size:cover; background-position:center">
+    <h1>Certamenes</h1>
+</div>
+
+<p>
+    <a asp-action="Create" class="glyphicon glyphicon-plus"></a>
+    Add new 
+</p>
+
+
+<form asp-action="Index">
+    <p>
+        Buscar nombre por: <input type="text" name="cadenaBuscada">
+        <input type="submit" value="Buscar" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.ActionLink("Ciudad", "Index", new { ordena = ViewBag.Ciudad })
+            </th>
+            <th>
+                @Html.ActionLink("Nombre", "Index", new { ordena = ViewBag.Nombre })
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ciudad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="glyphicon glyphicon-edit"></a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id"  class="glyphicon glyphicon-trash"></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

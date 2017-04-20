@@ -1,0 +1,72 @@
+@model IEnumerable<PromotorDePeliculas.Models.Comentario>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron" style="background:url(../Images/red.png); background-size:cover; background-position:center">
+    <h1><font color="white">Comentarios de las peliculas</font></h1>
+</div>
+
+<p>
+    <a asp-action="Create" class="glyphicon glyphicon-plus"></a>
+    Add new
+</p>
+
+<form asp-action="Index">
+    <p>
+        Buscar comentario por nombre de pelicula: <input type="text" name="cadenaBuscada">
+        <input type="submit" value="Buscar" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.ActionLink("Pelicula", "Index", new { ordena = ViewBag.Pelicula })
+            </th>
+            <th>
+                @Html.ActionLink("Usuario", "Index", new { ordena = ViewBag.Usuario })
+            </th>
+            <th>
+                @Html.ActionLink("Descripcion", "Index", new { ordena = ViewBag.Descripcion })
+            </th>
+            <th>
+                @Html.ActionLink("FechaComentario", "Index", new { ordena = ViewBag.FechaComentario })
+            </th>
+            <th>
+                @Html.ActionLink("Lugar", "Index", new { ordena = ViewBag.Lugar })
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pelicula.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaComentario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lugar)
+            </td>
+            <td>
+                <button >@Html.ActionLink("Edit", "Edit", new { u = item.UsuarioId, d = item.PeliculaId  }) </button> |
+                @Html.ActionLink("Details", "Details", new { u = item.UsuarioId, d = item.PeliculaId /* id=item.PrimaryKey */ }) |
+                <button class="glyphicon glyphicon-trash">   @Html.ActionLink("", "Delete", new { u = item.UsuarioId, d = item.PeliculaId })</button>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

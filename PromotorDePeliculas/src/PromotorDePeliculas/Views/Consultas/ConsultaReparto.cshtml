@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Consulta";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("ActoresPapelesPelicula", "Consultas", FormMethod.Get))
+{
+
+    <div class="jumbotron">
+        <h1>Consulta reparto de una película</h1>
+    </div>
+
+    <div class="form-horizontal">
+        <hr />
+        <div class="form-group">
+            <div class="col-md-10">
+                <p  style="font-size:200%;">Seleccione la pelicula para ver su reparto</p>
+                @Html.DropDownList("PeliculaId")
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Consultar" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,64 @@
+@model PromotorDePeliculas.Models.Papel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+<form asp-action="Edit">
+    <div class="form-horizontal">
+        <h4>Papel</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="PeliculaId" />
+    <input type="hidden" asp-for="ActorId" />
+        <div class="form-group">
+            <label asp-for="Descripcion" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Descripcion" class="form-control" />
+                <span asp-validation-for="Descripcion" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="TipoPapel" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="TipoPapel" class="form-control" />
+                <span asp-validation-for="TipoPapel" class="text-danger" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="PeliculaId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="PeliculaId" class="form-control" />
+                <span asp-validation-for="PeliculaId" class="text-danger" />
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label asp-for="ActorId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ActorId" class="form-control" />
+                <span asp-validation-for="ActorId" class="text-danger" />
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index" class="glyphicon glyphicon-arrow-left" /> 
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

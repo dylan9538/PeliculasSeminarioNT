@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ModeloPeliculas.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ModeloPeliculasStoreContainer">
+    <EntitySet Name="Peliculas" EntityType="ModeloPeliculas.Store.Peliculas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Actores" EntityType="ModeloPeliculas.Store.Actores" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Productor" EntityType="ModeloPeliculas.Store.Productor" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DirectorSet" EntityType="ModeloPeliculas.Store.DirectorSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Comentarios" EntityType="ModeloPeliculas.Store.Comentarios" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Usuarios" EntityType="ModeloPeliculas.Store.Usuarios" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Premios" EntityType="ModeloPeliculas.Store.Premios" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Certamenes" EntityType="ModeloPeliculas.Store.Certamenes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Papeles" EntityType="ModeloPeliculas.Store.Papeles" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="PeliculaProductor" Association="ModeloPeliculas.Store.PeliculaProductor">
+      <End Role="Pelicula" EntitySet="Peliculas" />
+      <End Role="Productor" EntitySet="Productor" />
+    </AssociationSet>
+    <AssociationSet Name="PeliculaDirector" Association="ModeloPeliculas.Store.PeliculaDirector">
+      <End Role="Pelicula" EntitySet="Peliculas" />
+      <End Role="Director" EntitySet="DirectorSet" />
+    </AssociationSet>
+    <AssociationSet Name="ComentarioUsuario" Association="ModeloPeliculas.Store.ComentarioUsuario">
+      <End Role="Comentario" EntitySet="Comentarios" />
+      <End Role="Usuario" EntitySet="Usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="PeliculaComentario" Association="ModeloPeliculas.Store.PeliculaComentario">
+      <End Role="Pelicula" EntitySet="Peliculas" />
+      <End Role="Comentario" EntitySet="Comentarios" />
+    </AssociationSet>
+    <AssociationSet Name="PeliculaPremio" Association="ModeloPeliculas.Store.PeliculaPremio">
+      <End Role="Pelicula" EntitySet="Peliculas" />
+      <End Role="Premio" EntitySet="Premios" />
+    </AssociationSet>
+    <AssociationSet Name="PremioCertamen" Association="ModeloPeliculas.Store.PremioCertamen">
+      <End Role="Premio" EntitySet="Premios" />
+      <End Role="Certamen" EntitySet="Certamenes" />
+    </AssociationSet>
+    <AssociationSet Name="PapelPelicula" Association="ModeloPeliculas.Store.PapelPelicula">
+      <End Role="Papel" EntitySet="Papeles" />
+      <End Role="Pelicula" EntitySet="Peliculas" />
+    </AssociationSet>
+    <AssociationSet Name="ActorPapel" Association="ModeloPeliculas.Store.ActorPapel">
+      <End Role="Actor" EntitySet="Actores" />
+      <End Role="Papel" EntitySet="Papeles" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Peliculas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Titulo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LugarEstreno" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Nacionalidad" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FechaEstreno" Type="datetime" Nullable="false" />
+    <Property Name="ProductorId" Type="int" Nullable="false" />
+    <Property Name="DirectorId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Actores">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Direccion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Telefono" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FechaNacimiento" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Productor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Direccion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Telefono" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DirectorSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Direccion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Telefono" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Comentarios">
+    <Key>
+      <PropertyRef Name="UsuarioId" />
+      <PropertyRef Name="PeliculaId" />
+    </Key>
+    <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Lugar" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FechaComentario" Type="datetime" Nullable="false" />
+    <Property Name="UsuarioId" Type="int" Nullable="false" />
+    <Property Name="PeliculaId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Premios">
+    <Key>
+      <PropertyRef Name="PeliculaId" />
+      <PropertyRef Name="CertamenId" />
+    </Key>
+    <Property Name="TipoPremio" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PeliculaId" Type="int" Nullable="false" />
+    <Property Name="CertamenId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Certamenes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ciudad" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Papeles">
+    <Key>
+      <PropertyRef Name="ActorId" />
+      <PropertyRef Name="PeliculaId" />
+    </Key>
+    <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TipoPapel" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PeliculaId" Type="int" Nullable="false" />
+    <Property Name="ActorId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="PeliculaProductor">
+    <End Role="Pelicula" Type="ModeloPeliculas.Store.Peliculas" Multiplicity="*" />
+    <End Role="Productor" Type="ModeloPeliculas.Store.Productor" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Productor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pelicula">
+        <PropertyRef Name="ProductorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PeliculaDirector">
+    <End Role="Pelicula" Type="ModeloPeliculas.Store.Peliculas" Multiplicity="*" />
+    <End Role="Director" Type="ModeloPeliculas.Store.DirectorSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Director">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pelicula">
+        <PropertyRef Name="DirectorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ComentarioUsuario">
+    <End Role="Comentario" Type="ModeloPeliculas.Store.Comentarios" Multiplicity="*" />
+    <End Role="Usuario" Type="ModeloPeliculas.Store.Usuarios" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comentario">
+        <PropertyRef Name="UsuarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PeliculaComentario">
+    <End Role="Pelicula" Type="ModeloPeliculas.Store.Peliculas" Multiplicity="1" />
+    <End Role="Comentario" Type="ModeloPeliculas.Store.Comentarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pelicula">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comentario">
+        <PropertyRef Name="PeliculaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PeliculaPremio">
+    <End Role="Pelicula" Type="ModeloPeliculas.Store.Peliculas" Multiplicity="1" />
+    <End Role="Premio" Type="ModeloPeliculas.Store.Premios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pelicula">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Premio">
+        <PropertyRef Name="PeliculaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PremioCertamen">
+    <End Role="Premio" Type="ModeloPeliculas.Store.Premios" Multiplicity="*" />
+    <End Role="Certamen" Type="ModeloPeliculas.Store.Certamenes" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Certamen">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Premio">
+        <PropertyRef Name="CertamenId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PapelPelicula">
+    <End Role="Papel" Type="ModeloPeliculas.Store.Papeles" Multiplicity="*" />
+    <End Role="Pelicula" Type="ModeloPeliculas.Store.Peliculas" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Pelicula">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Papel">
+        <PropertyRef Name="PeliculaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ActorPapel">
+    <End Role="Actor" Type="ModeloPeliculas.Store.Actores" Multiplicity="1" />
+    <End Role="Papel" Type="ModeloPeliculas.Store.Papeles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Papel">
+        <PropertyRef Name="ActorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

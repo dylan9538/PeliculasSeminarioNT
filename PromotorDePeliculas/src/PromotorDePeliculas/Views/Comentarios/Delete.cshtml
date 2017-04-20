@@ -1,0 +1,42 @@
+@model PromotorDePeliculas.Models.Comentario
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Comentario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaComentario)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FechaComentario)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Lugar)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Lugar)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <a asp-action="Index" class="glyphicon glyphicon-arrow-left" /> |
+            <input type="submit" value="Delete" class="btn btn-default" /> 
+           
+        </div>
+    </form>
+</div>

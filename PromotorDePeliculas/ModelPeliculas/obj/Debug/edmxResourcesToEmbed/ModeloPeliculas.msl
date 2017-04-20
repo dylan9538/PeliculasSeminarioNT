@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModeloPeliculasStoreContainer" CdmEntityContainer="ModeloPeliculasContainer">
+    <EntitySetMapping Name="Peliculas">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloPeliculas.Pelicula)">
+        <MappingFragment StoreEntitySet="Peliculas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="LugarEstreno" ColumnName="LugarEstreno" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Nacionalidad" ColumnName="Nacionalidad" />
+          <ScalarProperty Name="FechaEstreno" ColumnName="FechaEstreno" />
+          <ScalarProperty Name="ProductorId" ColumnName="ProductorId" />
+          <ScalarProperty Name="DirectorId" ColumnName="DirectorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Actores">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloPeliculas.Actor)">
+        <MappingFragment StoreEntitySet="Actores">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Productor">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloPeliculas.Productor)">
+        <MappingFragment StoreEntitySet="Productor">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DirectorSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloPeliculas.Director)">
+        <MappingFragment StoreEntitySet="DirectorSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comentarios">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloPeliculas.Comentario)">
+        <MappingFragment StoreEntitySet="Comentarios">
+          <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+          <ScalarProperty Name="PeliculaId" ColumnName="PeliculaId" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Lugar" ColumnName="Lugar" />
+          <ScalarProperty Name="FechaComentario" ColumnName="FechaComentario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloPeliculas.Usuario)">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Premios">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloPeliculas.Premio)">
+        <MappingFragment StoreEntitySet="Premios">
+          <ScalarProperty Name="PeliculaId" ColumnName="PeliculaId" />
+          <ScalarProperty Name="CertamenId" ColumnName="CertamenId" />
+          <ScalarProperty Name="TipoPremio" ColumnName="TipoPremio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Certamenes">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloPeliculas.Certamen)">
+        <MappingFragment StoreEntitySet="Certamenes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Papeles">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloPeliculas.Papel)">
+        <MappingFragment StoreEntitySet="Papeles">
+          <ScalarProperty Name="ActorId" ColumnName="ActorId" />
+          <ScalarProperty Name="PeliculaId" ColumnName="PeliculaId" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="TipoPapel" ColumnName="TipoPapel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,76 @@
+@model IEnumerable<PromotorDePeliculas.Models.Premio>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron" style="background:url(../Images/yellow.jpg); background-size:cover; background-position:center">
+    <h1>Premios</h1>
+</div>
+
+<p>
+    <a asp-action="Create" class="glyphicon glyphicon-plus"></a>
+    Add new
+</p>
+
+<form asp-action="Index">
+    <p>
+        Buscar premio por nombre de pelicula: <input type="text" name="cadenaBuscada">
+        <input type="submit" value="Buscar" />
+    </p>
+</form>
+
+<form asp-action="Index">
+    <p>
+        
+        Filtrar por tipo de premio: <select asp-items="@Html.GetEnumSelectList<TipoPremio>()" name="tipoPremio">
+            <option value="">Todos</option>
+        </select>
+        <input type="submit" value="Buscar" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr> 
+            
+            <th>
+                @Html.ActionLink("Pelicula", "Index", new { ordena = ViewBag.Pelicula })
+            </th>
+            <th>
+                @Html.ActionLink("Certamen", "Index", new { ordena = ViewBag.Certamen })
+            </th>
+            <th>
+                @Html.ActionLink("Tipo de Premio", "Index", new { ordena = ViewBag.TipoPremio })
+            </th>
+            <th>
+                @Html.ActionLink("fecha de Entrega", "Index", new { ordena = ViewBag.fechaEntrega })
+            </th>
+           
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pelicula.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Certamen.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoPremio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaEntrega)
+            </td>
+            <td>
+               <button> @Html.ActionLink("Edit", "Edit", new { u = item.CertamenId, d = item.PeliculaId/* id=item.PrimaryKey */ }) </button> |
+                @Html.ActionLink("Details", "Details", new { u = item.CertamenId, d = item.PeliculaId/* id=item.PrimaryKey */ }) |
+                <button class="glyphicon glyphicon-trash"> @Html.ActionLink("", "Delete", new { u = item.CertamenId, d = item.PeliculaId/* id=item.PrimaryKey */ })</button>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

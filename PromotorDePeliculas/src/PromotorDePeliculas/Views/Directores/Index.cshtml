@@ -1,0 +1,136 @@
+@model  PromotorDePeliculas.Models.ModelsVista.DirectorPeliculasPremios
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron" style="background:url(../Images/blue.jpg); background-size:cover; background-position:center">
+    <h1>Lista de Directores</h1>
+</div>
+
+<p>
+    <a asp-action="Create" class="glyphicon glyphicon-plus"></a>
+    Add new
+</p>
+
+<form asp-action="Index">
+    <p>
+        Buscar nombre por: <input type="text" name="cadenaBuscada">
+        <input type="submit" value="Buscar" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.ActionLink("Id", "Index", new { ordena = ViewBag.Id })
+            </th>
+            <th>
+                @Html.ActionLink("Direccion", "Index", new { ordena = ViewBag.Direccion })
+            </th>
+            <th>
+                @Html.ActionLink("Nombre", "Index", new { ordena = ViewBag.Nombre })
+            </th>
+            <th>
+                @Html.ActionLink("Telefono", "Index", new { ordena = ViewBag.Telefono })
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+
+@foreach (var item in Model.Directores)
+{
+    string directorSelec = "";
+    if (item.Id == ViewBag.DirectorId)
+    {
+        directorSelec = "success";
+    }
+    <tr class="@directorSelec">
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono)
+            </td>
+            <td>
+                <a asp-action="Index" asp-route-ide="@item.Id">Select</a> |
+                <a asp-action="Edit" asp-route-id="@item.Id" class="glyphicon glyphicon-edit"></a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" class="glyphicon glyphicon-trash"></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+
+
+@if (Model.Peliculas != null)
+{
+    <h3>Peliculas del director seleccionado</h3>
+    <table class="table">
+        <tr>
+            <th>Titulo</th>
+            <th>Lugar de estreno</th>
+            <th>Descripcion</th>
+            <th>Nacionalidad</th>
+            <th>Fecha de estreno</th>
+        </tr>
+        @foreach (var item in Model.Peliculas)
+        {
+            string peliSelec = "";
+            if (item.Id == ViewBag.PeliculaId)
+            {
+                peliSelec = "success";
+            }
+            <tr class="@peliSelec">
+                <td>@item.Titulo</td>
+                <td>@item.LugarEstreno</td>
+                <td>@item.Descripcion</td>
+                <td>@item.Nacionalidad</td>
+                <td>@item.FechaEstreno</td>
+               
+                <td>
+                    <a asp-action="Index" asp-route-ide="@item.Director.Id" asp-route-peliId="@item.Id">Select</a>
+                </td>
+            </tr>
+        }
+    </table>
+}
+
+    @if (Model.Premios != null)
+    {
+        <h3>Premios de la pelicula seleccionada</h3>
+        <table class="table">
+            <tr>
+                <th>Certamen</th>
+                <th>Tipo</th>
+                <th>Fecha entrega</th>
+            </tr>
+            @foreach (var item in Model.Premios)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CertamenId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TipoPremio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fechaEntrega)
+                    </td>
+                </tr>
+            }
+        </table>
+
+    }

@@ -1,0 +1,39 @@
+@model PromotorDePeliculas.Models.Comentario
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Comentario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaComentario)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FechaComentario)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Lugar)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Lugar)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Index" class="glyphicon glyphicon-arrow-left" /> |
+    @Html.ActionLink("Edit", "Edit", new { u = Model.UsuarioId, d = Model.PeliculaId }) 
+   
+</div>

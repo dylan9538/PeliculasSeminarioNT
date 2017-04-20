@@ -1,0 +1,127 @@
+@model PromotorDePeliculas.Models.Pelicula
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Pelicula</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaEstreno)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FechaEstreno)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LugarEstreno)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LugarEstreno)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Nacionalidad)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nacionalidad)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Titulo)
+        </dd>
+
+        <dd>
+            <h4>Papeles</h4>
+            <table class="table">
+                <tr>
+                    <th>Descripcion</th>
+                    <th>Tipo de papel</th>
+                    <th>Actor</th>
+                </tr>
+                @foreach (var item in Model.Papeles)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Descripcion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TipoPapel)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ActorId)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+
+        <dd>
+            <h4>Premios</h4>
+            <table class="table">
+                <tr>
+                    <th>Tipo de Premio</th>
+                    <th>Fecha de Entrega</th>
+                    
+                </tr>
+                @foreach (var item in Model.Premios)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TipoPremio)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.fechaEntrega)
+                        </td>
+                        
+                    </tr>
+                }
+            </table>
+        </dd>
+
+
+        <dd>
+            <h4>Comentarios</h4>
+            <table class="table">
+                <tr>
+                  
+                    <th>Descripcion</th>
+                    <th>Lugar</th>
+                    <th>Fecha</th>
+                </tr>
+                @foreach (var item in Model.Comentarios)
+                {
+                    <tr>
+                        
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Descripcion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Lugar)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FechaComentario)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <a asp-action="Index" class="glyphicon glyphicon-arrow-left" /> |
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> 
+    
+</div>

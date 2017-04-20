@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ModeloPeliculas" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="ModeloPeliculasContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Peliculas" EntityType="ModeloPeliculas.Pelicula" />
+    <EntitySet Name="Actores" EntityType="ModeloPeliculas.Actor" />
+    <EntitySet Name="Productor" EntityType="ModeloPeliculas.Productor" />
+    <EntitySet Name="DirectorSet" EntityType="ModeloPeliculas.Director" />
+    <EntitySet Name="Comentarios" EntityType="ModeloPeliculas.Comentario" />
+    <EntitySet Name="Usuarios" EntityType="ModeloPeliculas.Usuario" />
+    <EntitySet Name="Premios" EntityType="ModeloPeliculas.Premio" />
+    <EntitySet Name="Certamenes" EntityType="ModeloPeliculas.Certamen" />
+    <EntitySet Name="Papeles" EntityType="ModeloPeliculas.Papel" />
+    <AssociationSet Name="PeliculaProductor" Association="ModeloPeliculas.PeliculaProductor">
+      <End Role="Pelicula" EntitySet="Peliculas" />
+      <End Role="Productor" EntitySet="Productor" />
+    </AssociationSet>
+    <AssociationSet Name="PeliculaDirector" Association="ModeloPeliculas.PeliculaDirector">
+      <End Role="Pelicula" EntitySet="Peliculas" />
+      <End Role="Director" EntitySet="DirectorSet" />
+    </AssociationSet>
+    <AssociationSet Name="ComentarioUsuario" Association="ModeloPeliculas.ComentarioUsuario">
+      <End Role="Comentario" EntitySet="Comentarios" />
+      <End Role="Usuario" EntitySet="Usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="PeliculaComentario" Association="ModeloPeliculas.PeliculaComentario">
+      <End Role="Pelicula" EntitySet="Peliculas" />
+      <End Role="Comentario" EntitySet="Comentarios" />
+    </AssociationSet>
+    <AssociationSet Name="PeliculaPremio" Association="ModeloPeliculas.PeliculaPremio">
+      <End Role="Pelicula" EntitySet="Peliculas" />
+      <End Role="Premio" EntitySet="Premios" />
+    </AssociationSet>
+    <AssociationSet Name="PremioCertamen" Association="ModeloPeliculas.PremioCertamen">
+      <End Role="Premio" EntitySet="Premios" />
+      <End Role="Certamen" EntitySet="Certamenes" />
+    </AssociationSet>
+    <AssociationSet Name="PapelPelicula" Association="ModeloPeliculas.PapelPelicula">
+      <End Role="Papel" EntitySet="Papeles" />
+      <End Role="Pelicula" EntitySet="Peliculas" />
+    </AssociationSet>
+    <AssociationSet Name="ActorPapel" Association="ModeloPeliculas.ActorPapel">
+      <End Role="Actor" EntitySet="Actores" />
+      <End Role="Papel" EntitySet="Papeles" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Pelicula">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Titulo" Type="String" Nullable="false" />
+    <Property Name="LugarEstreno" Type="String" Nullable="false" />
+    <Property Name="Descripcion" Type="String" Nullable="false" />
+    <Property Name="Nacionalidad" Type="String" Nullable="false" />
+    <Property Name="FechaEstreno" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="Productor" Relationship="ModeloPeliculas.PeliculaProductor" FromRole="Pelicula" ToRole="Productor" />
+    <Property Name="ProductorId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Director" Relationship="ModeloPeliculas.PeliculaDirector" FromRole="Pelicula" ToRole="Director" />
+    <Property Name="DirectorId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Comentarios" Relationship="ModeloPeliculas.PeliculaComentario" FromRole="Pelicula" ToRole="Comentario" />
+    <NavigationProperty Name="Premios" Relationship="ModeloPeliculas.PeliculaPremio" FromRole="Pelicula" ToRole="Premio" />
+    <NavigationProperty Name="Papeles" Relationship="ModeloPeliculas.PapelPelicula" FromRole="Pelicula" ToRole="Papel" />
+  </EntityType>
+  <EntityType Name="Actor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+    <Property Name="Nombre" Type="String" Nullable="false" />
+    <Property Name="Direccion" Type="String" Nullable="false" />
+    <Property Name="Telefono" Type="String" Nullable="false" />
+    <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="Papeles" Relationship="ModeloPeliculas.ActorPapel" FromRole="Actor" ToRole="Papel" />
+  </EntityType>
+  <EntityType Name="Productor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+    <Property Name="Nombre" Type="String" Nullable="false" />
+    <Property Name="Direccion" Type="String" Nullable="false" />
+    <Property Name="Telefono" Type="String" Nullable="false" />
+    <NavigationProperty Name="Peliculas" Relationship="ModeloPeliculas.PeliculaProductor" FromRole="Productor" ToRole="Pelicula" />
+  </EntityType>
+  <EntityType Name="Director">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+    <Property Name="Nombre" Type="String" Nullable="false" />
+    <Property Name="Direccion" Type="String" Nullable="false" />
+    <Property Name="Telefono" Type="String" Nullable="false" />
+    <NavigationProperty Name="Peliculas" Relationship="ModeloPeliculas.PeliculaDirector" FromRole="Director" ToRole="Pelicula" />
+  </EntityType>
+  <EntityType Name="Comentario">
+    <Key>
+      <PropertyRef Name="UsuarioId" />
+      <PropertyRef Name="PeliculaId" />
+    </Key>
+    <Property Name="Descripcion" Type="String" Nullable="false" />
+    <Property Name="Lugar" Type="String" Nullable="false" />
+    <Property Name="FechaComentario" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="Usuario" Relationship="ModeloPeliculas.ComentarioUsuario" FromRole="Comentario" ToRole="Usuario" />
+    <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Pelicula" Relationship="ModeloPeliculas.PeliculaComentario" FromRole="Comentario" ToRole="Pelicula" />
+    <Property Name="PeliculaId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" Nullable="false" />
+    <Property Name="Email" Type="String" Nullable="false" />
+    <NavigationProperty Name="Comentarios" Relationship="ModeloPeliculas.ComentarioUsuario" FromRole="Usuario" ToRole="Comentario" />
+  </EntityType>
+  <EntityType Name="Premio">
+    <Key>
+      <PropertyRef Name="PeliculaId" />
+      <PropertyRef Name="CertamenId" />
+    </Key>
+    <Property Name="TipoPremio" Type="String" Nullable="false" />
+    <NavigationProperty Name="Pelicula" Relationship="ModeloPeliculas.PeliculaPremio" FromRole="Premio" ToRole="Pelicula" />
+    <Property Name="PeliculaId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Certamen" Relationship="ModeloPeliculas.PremioCertamen" FromRole="Premio" ToRole="Certamen" />
+    <Property Name="CertamenId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Certamen">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ciudad" Type="String" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" />
+    <NavigationProperty Name="Premios" Relationship="ModeloPeliculas.PremioCertamen" FromRole="Certamen" ToRole="Premio" />
+  </EntityType>
+  <EntityType Name="Papel">
+    <Key>
+      <PropertyRef Name="ActorId" />
+      <PropertyRef Name="PeliculaId" />
+    </Key>
+    <Property Name="Descripcion" Type="String" Nullable="false" />
+    <Property Name="TipoPapel" Type="String" Nullable="false" />
+    <NavigationProperty Name="Pelicula" Relationship="ModeloPeliculas.PapelPelicula" FromRole="Papel" ToRole="Pelicula" />
+    <Property Name="PeliculaId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Actor" Relationship="ModeloPeliculas.ActorPapel" FromRole="Papel" ToRole="Actor" />
+    <Property Name="ActorId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="PeliculaProductor">
+    <End Type="ModeloPeliculas.Pelicula" Role="Pelicula" Multiplicity="*" />
+    <End Type="ModeloPeliculas.Productor" Role="Productor" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Productor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pelicula">
+        <PropertyRef Name="ProductorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PeliculaDirector">
+    <End Type="ModeloPeliculas.Pelicula" Role="Pelicula" Multiplicity="*" />
+    <End Type="ModeloPeliculas.Director" Role="Director" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Director">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pelicula">
+        <PropertyRef Name="DirectorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ComentarioUsuario">
+    <End Type="ModeloPeliculas.Comentario" Role="Comentario" Multiplicity="*" />
+    <End Type="ModeloPeliculas.Usuario" Role="Usuario" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comentario">
+        <PropertyRef Name="UsuarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PeliculaComentario">
+    <End Type="ModeloPeliculas.Pelicula" Role="Pelicula" Multiplicity="1" />
+    <End Type="ModeloPeliculas.Comentario" Role="Comentario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pelicula">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comentario">
+        <PropertyRef Name="PeliculaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PeliculaPremio">
+    <End Type="ModeloPeliculas.Pelicula" Role="Pelicula" Multiplicity="1" />
+    <End Type="ModeloPeliculas.Premio" Role="Premio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pelicula">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Premio">
+        <PropertyRef Name="PeliculaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PremioCertamen">
+    <End Type="ModeloPeliculas.Premio" Role="Premio" Multiplicity="*" />
+    <End Type="ModeloPeliculas.Certamen" Role="Certamen" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Certamen">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Premio">
+        <PropertyRef Name="CertamenId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PapelPelicula">
+    <End Type="ModeloPeliculas.Papel" Role="Papel" Multiplicity="*" />
+    <End Type="ModeloPeliculas.Pelicula" Role="Pelicula" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Pelicula">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Papel">
+        <PropertyRef Name="PeliculaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ActorPapel">
+    <End Type="ModeloPeliculas.Actor" Role="Actor" Multiplicity="1" />
+    <End Type="ModeloPeliculas.Papel" Role="Papel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Papel">
+        <PropertyRef Name="ActorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

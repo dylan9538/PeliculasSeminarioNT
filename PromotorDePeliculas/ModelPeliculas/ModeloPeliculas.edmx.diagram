@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ecaddca153c14535bb9b3ddc37247d37" Name="Diagram1" DisplayType="true" ZoomLevel="74" >
+        <EntityTypeShape EntityType="ModeloPeliculas.Pelicula" Width="1.75" PointX="4.25" PointY="1" />
+        <EntityTypeShape EntityType="ModeloPeliculas.Actor" Width="2" PointX="9.875" PointY="0.75" />
+        <EntityTypeShape EntityType="ModeloPeliculas.Productor" Width="1.5" PointX="1.125" PointY="0.5" />
+        <EntityTypeShape EntityType="ModeloPeliculas.Director" Width="1.5" PointX="0.875" PointY="3.25" />
+        <EntityTypeShape EntityType="ModeloPeliculas.Comentario" Width="2.125" PointX="4.625" PointY="5.125" />
+        <EntityTypeShape EntityType="ModeloPeliculas.Usuario" Width="1.5" PointX="2" PointY="5.875" />
+        <EntityTypeShape EntityType="ModeloPeliculas.Premio" Width="1.75" PointX="7.5" PointY="3.125" />
+        <EntityTypeShape EntityType="ModeloPeliculas.Certamen" Width="1.5" PointX="10.25" PointY="3.375" />
+        <EntityTypeShape EntityType="ModeloPeliculas.Papel" Width="1.5" PointX="7.25" PointY="0.625" />
+        <AssociationConnector Association="ModeloPeliculas.PeliculaProductor" />
+        <AssociationConnector Association="ModeloPeliculas.PeliculaDirector" />
+        <AssociationConnector Association="ModeloPeliculas.ComentarioUsuario" />
+        <AssociationConnector Association="ModeloPeliculas.PeliculaComentario" />
+        <AssociationConnector Association="ModeloPeliculas.PeliculaPremio" />
+        <AssociationConnector Association="ModeloPeliculas.PremioCertamen" />
+        <AssociationConnector Association="ModeloPeliculas.PapelPelicula" />
+        <AssociationConnector Association="ModeloPeliculas.ActorPapel" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

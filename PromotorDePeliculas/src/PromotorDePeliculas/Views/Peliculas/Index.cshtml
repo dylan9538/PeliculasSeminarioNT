@@ -1,0 +1,88 @@
+@model IEnumerable<PromotorDePeliculas.Models.Pelicula>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron" style="background:url(../Images/red.png); background-size:cover; background-position:center">
+    <h1><font color="white">Peliculas en carterela</font></h1>
+</div>
+
+<p>
+    <a asp-action="Create" class="glyphicon glyphicon-plus"></a>
+    Add new
+</p>
+
+<form asp-action="Index">
+    <p>
+        Buscar titulo por: <input type="text" name="cadena">
+        <input type="submit" value="Buscar" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.ActionLink("Id", "Index", new { ordena = ViewBag.Id })
+            </th>
+            <th>
+                @Html.ActionLink("Descripcion", "Index", new { ordena = ViewBag.Descripcion })
+            </th>
+            <th>
+                @Html.ActionLink("Fecha de Estreno", "Index", new { ordena = ViewBag.FechaEstreno })
+            </th>
+            <th>
+                @Html.ActionLink("Lugar de Estreno", "Index", new { ordena = ViewBag.LugarEstreno })
+            </th>
+            <th>
+                @Html.ActionLink("Nacionalidad", "Index", new { ordena = ViewBag.Nacionalidad })
+            </th>
+            <th>
+                @Html.ActionLink("Titulo", "Index", new { ordena = ViewBag.Titulo })
+            </th>
+            <th>
+                @Html.ActionLink("Productor", "Index", new { ordena = ViewBag.Productor })
+            </th>
+            <th>
+                @Html.ActionLink("Director", "Index", new { ordena = ViewBag.Director })
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaEstreno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LugarEstreno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nacionalidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Productor.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Director.Nombre)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="glyphicon glyphicon-edit"></a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" class="glyphicon glyphicon-trash"></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

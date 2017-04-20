@@ -1,0 +1,42 @@
+﻿@model IEnumerable<PromotorDePeliculas.Models.ModelsVista.DirectoresPremios>
+@{
+    ViewBag.Title = "Premios directores";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Premios por director</h2>
+@foreach (var item in Model)
+{
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </dd>
+    </dl>
+
+
+    <h3>Premios</h3>
+    <table class="table">
+        <tr>
+            <th>Tipo premio</th>
+            <th>Fecha de entrega del premio</th>
+            <th>Certamen</th>
+        </tr>
+        @foreach (var i in item.Premios)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => i.TipoPremio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => i.fechaEntrega)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => i.CertamenId)
+                </td>
+               
+            </tr>
+        }
+    </table>
+}
